@@ -1,0 +1,10 @@
+<% provide(:title, 'All recruiters') %>
+<h1>All recruiters</h1>
+<div class="add_button">
+  <%= link_to "Add", signup_recruiter_path, class: "btn btn-lg btn-primary" %>
+</div>
+<%= will_paginate %>
+<ul class="recruiters">
+  <%= render @recruiters %>
+</ul>
+<%= will_paginate %>

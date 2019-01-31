@@ -1,0 +1,20 @@
+<%= form_for(@company) do |f| %>
+  <%= render 'error_messages' %>
+  <%= f.label :name %>
+  <%= f.text_field :name,class: 'form-control' %>
+  <%= f.label :website %>
+  <%= f.text_field :website ,class: 'form-control'%>
+  <%= f.label :headquarters %>
+  <%= f.text_field :headquarters ,class: 'form-control'%>
+  <%= f.label :size %>
+  <%= f.text_field :size,class: 'form-control' %>
+  <%= f.label :founded %>
+  <%= f.text_field :founded ,class: 'form-control'%>
+  <%= f.label :industry %>
+  <%= f.text_field :industry,class: 'form-control' %>
+  <%= f.label :revenue %>
+  <%= f.text_field :revenue,class: 'form-control' %>
+  <%= f.label :synopsis %>
+  <%= f.text_field :synopsis,class: 'form-control' %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

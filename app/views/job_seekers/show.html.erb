@@ -1,0 +1,17 @@
+<% provide(:title, @job_seeker.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <div class="profile_identity">
+        <%= gravatar_for_job_seeker @job_seeker %>
+          job seeker
+        </div>
+        <br/><br/><br/><br/>
+        Name:  <%= @job_seeker.full_name %><br/><br/>
+        Email:  <%= @job_seeker.email %><br/><br/>
+        Phone: <%= @job_seeker.phone %><br/><br/>
+      </h1>
+    </section>
+  </aside>
+</div>

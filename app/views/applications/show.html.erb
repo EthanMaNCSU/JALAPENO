@@ -1,0 +1,22 @@
+<% provide(:title, @application.id) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        Current Company: <%= @application.current_company %><br/><br/>
+        Job's ID: <%= @application.job_id %><br/><br/>
+        Job Seeker's ID:<%= @application.job_seeker_id %><br/><br/>
+        Job Seeker's email:<%= @application.job_seeker.email %><br/><br/>
+        Gender: <%= @application.gender %><br/><br/>
+        Race: <%= @application.race %><br/><br/>
+        Veteran Status: <%= @application.veteran_status %><br/><br/>
+        Disability Status: <%= @application.disability_status %><br/><br/>
+        Linkedin URL: <%= @application.linkedin_url %><br/><br/>
+        Portfolio URL: <%= @application.portfolio_url %><br/><br/>
+        Additional information: <%= @application.additional_information %><br/><br/>
+        Resume: <%= link_to "Resume", @application.document.url  %><br/><br/><br/>
+        Status: <%= @application.status %><br/><br/>
+      </h1>
+    </section>
+  </aside>
+</div>

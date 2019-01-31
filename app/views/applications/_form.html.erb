@@ -1,0 +1,60 @@
+<%= form_for(@application) do |f| %>
+  <% if admin?||job_seeker? %>
+    <%= render 'error_messages' %>
+    <%= f.label :current_company,"Your current company" %>
+    <%= f.text_field :current_company,class: 'form-control' %>
+    <%= f.label :job_id,"Job ID" %>
+    <%= f.text_field :job_id ,class: 'form-control'%>
+    <%= f.label :job_seeker_id,"Job seeker ID" %>
+    <% if admin? %>
+      <%= f.text_field :job_seeker_id ,class: 'form-control' %>
+    <% elsif job_seeker? %>
+      <%= f.text_field :job_seeker_id ,class: 'form-control', :value=>current_user.id, :readonly=> true%>
+    <% end %>
+    <%= f.label :gender %>
+    <%= f.text_field :gender ,class: 'form-control'%>
+    <%= f.label :race %>
+    <%= f.text_field :race,class: 'form-control' %>
+    <%= f.label :veteran_status,"Veteran status" %>
+    <%= f.text_field :veteran_status ,class: 'form-control'%>
+    <%= f.label :disability_status, "Disability status" %>
+    <%= f.text_field :disability_status,class: 'form-control' %>
+    <%= f.label :linkedin_url,"Your Linkedin URL" %>
+    <%= f.text_field :linkedin_url,class: 'form-control' %>
+    <%= f.label :portfolio_url,"Your Portfolio URL" %>
+    <%= f.text_field :portfolio_url,class: 'form-control' %>
+    <%= f.label :additional_information %>
+    <%= f.text_field :additional_information,class: 'form-control' %>
+    <%= f.label :upload_resume %>
+    <%= f.file_field :document %>
+  <% elsif recruiter?%>
+    <%= f.label :current_company,"Your current company" %>
+    <%= f.text_field :current_company,class: 'form-control' ,:readonly => true%>
+    <%= f.label :job_id,"Job ID" %>
+    <%= f.text_field :job_id ,class: 'form-control',:readonly => true%>
+    <%= f.label :job_seeker_id,"Job seeker ID" %>
+    <%= f.text_field :job_seeker_id ,class: 'form-control',:readonly => true%>
+    <%= f.label :gender %>
+    <%= f.text_field :gender ,class: 'form-control',:readonly => true%>
+    <%= f.label :race %>
+    <%= f.text_field :race,class: 'form-control' ,:readonly => true%>
+    <%= f.label :veteran_status,"Veteran status" %>
+    <%= f.text_field :veteran_status ,class: 'form-control',:readonly => true%>
+    <%= f.label :disability_status, "Disability status" %>
+    <%= f.text_field :disability_status,class: 'form-control' ,:readonly => true%>
+    <%= f.label :linkedin_url,"Your Linkedin URL" %>
+    <%= f.text_field :linkedin_url,class: 'form-control' ,:readonly => true%>
+    <%= f.label :portfolio_url,"Your Portfolio URL" %>
+    <%= f.text_field :portfolio_url,class: 'form-control' ,:readonly => true%>
+    <%= f.label :additional_information %>
+    <%= f.text_field :additional_information,class: 'form-control' ,:readonly => true%>
+  <% end %>
+  <% if admin?||recruiter?%>
+    <div class="field">
+      <%= f.label "Status" %>
+      <%= select(:application,:status, ["In process","Resume received", "Hired","Not selected"] ) %>
+        An email will be sent to job seeker when status is changed.
+    </div><br/>
+  <% end %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

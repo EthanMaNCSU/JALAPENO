@@ -1,0 +1,12 @@
+<li>
+  <%= link_to "Job "+job.id.to_s, job %>
+
+
+  <% if !job_seeker?&&(admin?||current_company==job.company_id)%>
+    | <%= link_to "edit", edit_job_path(job)%>
+
+    | <%= link_to "delete", job, method: :delete,
+                  data: { confirm: "You sure?" } %>
+  <% end %><br/>
+  <span class="job"><span style="display:inline-block; width:20px"></span>Company id: <%=job.company.id %></span>
+</li>  <br/>

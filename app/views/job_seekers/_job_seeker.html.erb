@@ -1,0 +1,13 @@
+<li>
+  <%= gravatar_for_job_seeker job_seeker, size: 50 %>
+  <%= link_to job_seeker.name, job_seeker %>
+
+  <% if admin?%>
+    | <%= link_to "edit", edit_job_seeker_path(job_seeker)%>
+  <% end %>
+
+  <% if admin?%>
+    | <%= link_to "delete", job_seeker, method: :delete,
+                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

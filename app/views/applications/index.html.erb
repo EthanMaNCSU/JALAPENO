@@ -1,0 +1,14 @@
+<% provide(:title, 'All Applications') %>
+<h1>Applications</h1>
+<% if admin?||job_seeker?%>
+  <div class="add_button">
+    <%= link_to "Add", applications_new_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
+<%= will_paginate %>
+<ul class="applications">
+  <%= render @applications %>
+</ul>
+
+<%= will_paginate %>
+

@@ -1,0 +1,20 @@
+<% provide(:title, 'All Companies') %>
+<h1>All Companies</h1>
+
+<% if recruiter?||admin?%>
+  <div class="add_button">
+    <%= link_to "Add", companies_new_path, class: "btn btn-lg btn-primary" %>&nbsp&nbsp
+    <% if recruiter?%>
+      <%= link_to "My conpany", current_user ,class: "btn btn-info"%>
+    <% end %>
+  </div>
+<% end %>
+
+<%= will_paginate %>
+
+<ul class="companies">
+  <%= render @companies %>
+</ul>
+
+<%= will_paginate %>
+

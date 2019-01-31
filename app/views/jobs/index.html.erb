@@ -1,0 +1,22 @@
+<% provide(:title, 'All jobs') %>
+<h1>All Jobs</h1>
+
+<div class="add_button">
+  <% unless job_seeker? %>
+    <%= link_to "Add", jobs_new_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
+
+  <div class="search_box">
+    <%= form_tag(request.env['PATH_INFO'], method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag 'Search by company id', name: nil %>
+    <% end %>
+  </div>
+</div>
+
+
+<%= will_paginate @jobs %>
+<ul class="jobs">
+  <%= render @jobs %>
+</ul>
+<%= will_paginate @jobs %>

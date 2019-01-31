@@ -1,0 +1,24 @@
+<%= form_for(@job) do |f| %>
+  <%= render 'error_message' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.label :responsibility %>
+  <%= f.text_field :responsibility, class: 'form-control' %>
+
+  <%= f.label :requirement %>
+  <%= f.text_field :requirement, class: 'form-control' %>
+
+  <%= f.label :employment_type %>
+  <%= f.text_field :employment_type, class: 'form-control' %>
+
+  <%= f.label :company_id %>
+  <% if recruiter? %>
+    <%= f.text_field :company_id,:value => current_company, class: 'form-control',:readonly => true %>
+    <% else %>
+    <%= f.text_field :company_id, class: 'form-control' %>
+  <%end %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+

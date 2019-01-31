@@ -1,0 +1,22 @@
+<li>
+ <%= link_to "Application "+application.id.to_s, application %>
+  <% if admin?%>
+  | <%= link_to "edit", edit_application_path(application)%>
+  <% end %>
+
+  <% if admin?||(job_seeker?&&application.job_seeker==current_user)%>
+    | <%= link_to "delete", application, method: :delete,
+                  data: { confirm: "You sure?" } %>
+  <% end %>
+  <% if recruiter?&&current_company==Job.find_by(id: application.job_id).company_id%>
+    | <%= link_to "update status", edit_application_path(application)%>
+  <% end %>
+</li>
+<li>
+  <span class="job"><span style="display:inline-block; width:20px"></span>Job id: <%=application.job.id %></span><br/>
+  <span class="job"><span style="display:inline-block; width:20px"></span>Status: <%=application.status %></span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(application.created_at) %> ago.
+</span>
+</li>
+

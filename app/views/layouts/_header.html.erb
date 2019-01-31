@@ -1,0 +1,45 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "JALAPENO", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+
+        <% if logged_in? %>
+          <% if session[:identity]=="Recruiter" %>
+            <%= render 'layouts/recruiter_actions' %>
+          <% elsif session[:identity]=="JobSeeker" %>
+            <%= render 'layouts/job_seeker_actions' %>
+          <% elsif session[:identity]=="Admin" %>
+            <%= render 'layouts/admin_actions' %>
+          <% end%>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+
+              <% if session[:identity]=="Recruiter" %>
+                <li><%= link_to "Settings", edit_recruiter_path(current_user) %></li>
+              <% elsif session[:identity]=="JobSeeker" %>
+                <li><%= link_to "Settings", edit_job_seeker_path(current_user) %></li>
+              <% elsif session[:identity]=="Admin" %>
+                <li><%= link_to "Settings", edit_admin_path(current_user) %></li>
+              <% end %>
+
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+
+      </ul>
+    </nav>
+  </div>
+</header>

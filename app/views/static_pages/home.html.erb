@@ -1,0 +1,7 @@
+<div class="center jumbotron">
+  <h1>Welcome to JALAPENO!</h1><br/>
+  <% unless logged_in? %>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
+</div>
+

@@ -1,0 +1,19 @@
+<% provide(:title, @company.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for_company @company %>
+        <br/><br/><br/><br/><br/><br/>
+        Name:<%= @company.name %><br/><br/>
+        Website: <%= @company.website %><br/><br/>
+        Headquarter: <%= @company.headquarters %><br/><br/>
+        Employee: <%= @company.size %><br/><br/>
+        Founded: <%= @company.founded %><br/><br/>
+        Industry: <%= @company.industry %><br/><br/>
+        Revenue: <%= @company.revenue %><br/><br/>
+        Synopsis: <%= @company.synopsis %><br/><br/>
+      </h1>
+    </section>
+  </aside>
+</div>
